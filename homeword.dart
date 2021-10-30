@@ -38,7 +38,26 @@ bool TimSoNguyenTo(int n){
         }
         return true;
     }
-
+  String? validatenumber(String number) {
+    String pattern = r'(^[0-9]{1}$)';
+    RegExp regExp = new RegExp(pattern);
+    if (number.length == 0) {
+      return 'Please enter your number';
+    } else if (!regExp.hasMatch(number)) {
+      return 'Please enter valid number (The number must have 1 digits)';
+    }
+    return null;
+  }
+ String? validatenumber2(String number) {
+    String pattern = r'(^[0-9]{4}$)';
+    RegExp regExp = new RegExp(pattern);
+    if (number.length == 0) {
+      return 'Please enter your number';
+    } else if (!regExp.hasMatch(number)) {
+      return 'Please enter valid number (The number must have 4 digits)';
+    }
+    return null;
+  }
 void main(List<String> args) {
 
   print(phoneCall(3, 1, 2, 20));
@@ -54,13 +73,18 @@ void main(List<String> args) {
     }
   }
   print("=============");
-  RegExp regExp = new RegExp(
-    "00[2-5]L\\d{4}",
-    caseSensitive: false,
-    multiLine: false,
-  );
-  List<int> mang =[];
-  for(int i=0;i<5;i++){
-
-  }
+ int x=1;
+int  y=1234;
+String number ="${x}L${y}";
+if(x<2||x>5){
+  print("The first number must >2 and <5");
+} else
+if(validatenumber(x.toString()) != null){
+    print(validatenumber(x.toString()));
+    }else if(validatenumber2(y.toString()) != null){
+    print(validatenumber2(y.toString()));
+    }else
+    {
+      print("Your number is: $number");
+    }
 }
